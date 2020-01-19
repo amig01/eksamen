@@ -1,0 +1,82 @@
+<HTML>
+<head>
+<script language="javascript">
+var s1=new String;
+var s2=new String;;
+</script>
+</head>
+<body background="2.jpg">
+<a href="main.htm">Перейти к новому заданию</a>
+
+<h1 align=center><font color=#990000>Проверка закончена. Ваш результат:</font></h1>
+<script language="javascript">
+
+
+if (window.parent.fram1.document.ff.pred.value>0)
+{
+ s1=window.parent.fram1.document.ff.matxx.value;
+ s3=window.parent.fram1.document.ff.gig.value;
+ d=0;
+ for (i=1;i<=10;i++)
+ {
+  k=s1.charAt(i-1);
+  if (k=="1")
+  {
+  d++;
+  }
+ }
+ p=d/10;
+ tma=2;
+ if (p>=0.56) tma=3;
+ if (p>=0.71) tma=4;
+ if (p>=0.86) tma=5;
+ p1=Math.floor(p*1000)/10;
+/*
+ if (d==5) tma=5;
+ if (d==4) tma=4;
+ if (d==3) tma=3;
+ if (d<=2) tma=2; 
+*/
+ document.write("<H1><font color=#000099>Оценка <br>            "+tma+" </font></h1>");
+
+
+ for (i=1;i<=10;i++)
+ {
+  k=s1.charAt(i-1);
+  if (k=="1")
+  {
+   document.write("<img src='good.gif'>");
+  }
+  else
+  {
+   document.write("<img src='bad.gif'>");
+  }
+ }
+}
+ document.write("<font face='Courier New'>");
+for (i=1;i<=10;i++)
+{
+ document.write("<h2><font color=#0000ff>Задание "+i+"</font></h2>");
+ document.write("<h3>");
+ document.write(eval("window.parent.fram1.document.fff.pk"+i+".value"));
+ document.write("<br>");
+ souu=eval("window.parent.fram1.document.fff.pkmy"+i+".value");
+ document.write("<font color=#990000>Ваш ответ:"+souu+"</font><br>");
+ document.write("<h4><font color=#0000AA><u>Образец решения:<br></u></font></h4>");
+ souu1=eval("window.parent.fram1.document.fff.pkres"+i+".value"); 
+ souu2=eval("window.parent.fram1.document.fff.pksos"+i+".value");
+ document.write(souu2);
+ document.write("</h3>");
+
+
+}
+document.write("</font>");
+window.parent.fram1.document.ff.hid1.value=0;
+ </script>
+
+
+</body>
+
+
+
+</HTML>
