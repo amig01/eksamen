@@ -1,0 +1,2741 @@
+<html>
+<head>
+<script language="javascript">
+var res1,res2,res3,res4,res5,res6,res7,res8,res9,res10,gong=0,ball=0,es1,es2,es3,es4,es5,es6,es7,es8,es9,es10,es11,res11,res12,res13,res14,res15,res16,res17,res18,res19,res20,bobik;
+var ss=new String();
+var m=new Array(11);
+var qsq=new Array(12);
+function bibisi(bb)
+{
+bb=""+bb;
+bbs="";
+k=bb.length;
+for (i=1;i<=k;i++)
+{
+ if (bb.charAt(i-1)=='.')
+ bbs=bbs+",";
+ else
+ bbs=bbs+bb.charAt(i-1);
+}
+bobik=bbs;
+}
+
+
+
+function umd(rova,rovb)
+{
+ srova="";
+ srovb="";
+ srovch="";
+ srova=srova+rova;
+ srovb=srovb+rovb;
+ venk1=srova.length;
+ venk2=srovb.length;
+ if (venk1>venk2) 
+ {
+  venk3=Math.floor((venk1-venk2)/2);
+  venk4=venk1-venk2-venk3;
+  if (venk3!=0) 
+  {
+   srovb=bsp(venk3,srovb,0,'\xA0');
+  } 
+  if (venk4!=0)
+  {
+   srovb=bsp(venk4,srovb,1,'\xA0');
+  }
+  srovch=bsp(venk1,srovch,1,'\u2014');
+ }
+ else
+ {
+  venk3=Math.floor((venk2-venk1)/2);
+  venk4=venk2-venk1-venk3;
+  if (venk3!=0) 
+  {
+   srova=bsp(venk3,srova,0,'\xA0');
+  } 
+  if (venk4!=0)
+  {
+   srova=bsp(venk4,srova,1,'\xA0');
+  }
+  srovch=bsp(venk2,srovch,1,'\u2014');
+ }
+}
+
+
+
+function vin(n)
+{
+ i=1;pp1=1;
+ while (i*i<=n)
+ {
+  ok=i*i;
+  ok1=n%ok;
+  if (ok1==0) pp1=i;
+  i=i+1;
+ }
+ return pp1;
+}
+
+
+function bsp(n,s,k,sim)
+//n-кол-во, s-строка,k-0(слева),1(справа),sim-символ
+{
+ for (i=0;i<n;i++)
+ {
+ if (k==0)
+ s=sim+s;else s=s+sim;
+ }
+ return s;
+}
+
+
+function qvad(n)
+{
+ r=Math.floor(Math.sqrt(n));
+ if (r*r==n) return r; else return (-1);
+
+}
+function frst(sss)
+{
+ return "<font face='Symbol'>"+String.fromCharCode(sss)+"</font>";
+}
+function frsp(sss)
+{
+ return "<font face='Courier New'>"+String.fromCharCode(sss)+"</font>";
+}
+function stepen(a,b)
+{
+ var i,k;
+ k=1;
+ for (i=0;i<b;i++)
+ k=k*a;
+ return k;
+}
+function simvol(n)
+{
+ 
+ss="0123456789+-" + '\xD7' + "/." + '\xA5' +"[](){}"+'\xC7'+'\xC8'+";"+'\xD6'+'\xC6'+'\xCE'+'\xB0'+'\x61'+'\x70'+'\xB4'+'\xB1';
+
+ var i,j,z,ks; 
+for (i=0;i<3;i++)
+ {
+ for (j=0;j<11;j++)
+  {
+   z=11*i+j;
+   ks=ss.charAt(z);
+   document.write("<input type=button name=kn"+z+"x"+n+" style='width:25;height:25;font-size:13;font-family:Symbol' value="+ks+" onClick='document.f1.t"+n+".value=document.f1.t"+n+".value+document.f1.kn"+z+"x"+n+".value;document.f1.t"+n+".focus()'>"); 
+
+  }
+ document.write("<br>");
+ }
+}
+
+
+
+function prv(t,k)
+{
+//  k=0, если самое первое число без переменной
+//  k=1  первое число с переменной
+//  k=2  не первое число без переменной
+//  k=3  не первое число с переменной
+ var s;
+ if (t<0)
+ {
+  if (t==-1)
+  {
+   switch(k)
+   {
+    case 0:s="-"+Math.abs(t);break;
+    case 1:s="-";break;
+    case 2:s="-"+Math.abs(t);break;
+    case 3:s="-";break;
+
+   } 
+  }
+  else
+  {
+   switch(k)
+    {
+    case 0:s="-"+Math.abs(t);break;
+    case 1:s="-"+Math.abs(t);break;
+    case 2:s="-"+Math.abs(t);break;
+    case 3:s="-"+Math.abs(t);break;
+
+    }
+  }
+ }
+ else
+ {
+  if (t==1)
+  {
+   switch(k)
+   {
+    case 0: s=""+Math.abs(t);break;
+    case 1: s="";break;
+    case 2: s="+"+Math.abs(t);break;
+    case 3: s="+";break;
+
+   }
+  }
+  else
+  {
+    switch (k)
+    {
+    case 0: s=Math.abs(t);break;
+    case 1: s=Math.abs(t);break;
+    case 2: s="+"+Math.abs(t);break;
+    case 3: s="+"+Math.abs(t);break;
+
+    }
+  }
+ }
+ 
+ return s;
+}
+
+function evklid(a,b)
+{
+ var m,n,t;
+ if (a==b) return a;
+ else
+ {
+  if (a==0) return b;
+  if (b==0) return a;
+  if (a>b) {m=a;n=b} else {m=b;n=a;}
+  while(m!=n)
+  {
+   t=m-n;
+   if (t>=n) {m=t;}
+   else
+   {
+    m=n;n=t;
+   }
+  }
+ 
+ }
+ return n;
+}
+function prr(a,b)
+//Придумывается число
+{
+ var s1;
+ do
+ {
+ s1=Math.floor(Math.random()*(b-a+1))+a;
+ }
+ while (s1==0);
+ return s1;
+}
+function prrs0(a,b)
+//Придумывается число
+{
+ var s1;
+ s1=Math.floor(Math.random()*(b-a+1))+a;
+ return s1;
+}
+
+
+function indv(s,k)
+{
+ return s+"<sup>"+k+"</sup>";
+}
+function indn(s,k)
+{
+ return s+"<sub>"+k+"</sub>";
+}
+function indexn(s,k)
+{
+ var sps;
+ sps=s+"<font style='font-size:12'><sub>"+k+"</sub></font>";
+ return sps;
+}
+function zap(aa)
+{
+var sa,ka,i,c,ssa;
+
+ sa=""+aa;
+
+ ka=sa.length;
+ ssa=""; 
+ for (i=0;i<ka;i++)
+ {
+
+  c=sa.charAt(i);
+  if (c==".")
+  {
+   ssa=ssa+",";
+  }
+  else
+  ssa=ssa+c;
+ }
+ return ssa; 
+
+}
+
+
+
+
+
+
+function t1z1()
+{
+var mm=new Array();
+hhh=prr(6,8);
+switch(hhh)
+{
+case 7:
+z1=prr(12,40);//Знаменатель первой дроби
+z01=Math.floor(z1/3); //Третья часть от знаменателя
+t1=prr(1,z01); //Числители дробей из первого блока
+t2=prr(1,z01);
+t3=prr(1,z01);
+th=t1-(-t2)-(-t3); //Сумма числителей
+t=0;
+                    //Пооиск всех делителей числителя первого блока    
+for (i=2;i<=th;i++)
+{
+ if (th%i==0)
+  {
+   t++;
+   mm[t]=i;
+  }
+}
+r=prr(1,t);
+zz1=mm[r]; //Знаменатель второго блока
+cel1=prr(1,3);
+cel2=prr(1,3);
+cel3=prr(1,3);
+
+
+
+tt1=prr(1,zz1-1); //Числители дробей из второго блока
+tt2=prr(1,zz1-1);
+tt3=prr(1,zz1-1);
+
+
+q=cel1*zz1-(-tt1)-(-zz1*cel2-tt2)-(-zz1*cel3-tt3); //Сумма числителей из второго блока
+q1=q%z1;
+q2=z1-q1;
+tt3=tt3-(-q2);
+if (tt3>zz1)
+{
+ cel3=cel3-(-Math.floor(tt3/zz1));
+ tt3=tt3%zz1;
+}
+
+
+s0='\xA0';s2='\xA0';s1="(";
+
+rs1=""+t1;
+rs2=""+z1;
+umd(t1,z1);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+
+sqs=" + ";
+s0=bsp(sqs.length,s0,1,'\xA0');
+s2=bsp(sqs.length,s2,1,'\xA0');
+s1=s1+sqs;
+
+umd(""+t2,""+z1);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+sqs=" + ";
+s0=bsp(sqs.length,s0,1,'\xA0');
+s2=bsp(sqs.length,s2,1,'\xA0');
+s1=s1+sqs;
+
+umd(""+t3,""+z1);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+
+
+sqs=")"+'\u2022'+"(";
+s0=bsp(sqs.length,s0,1,'\xA0');
+s2=bsp(sqs.length,s2,1,'\xA0');
+s1=s1+sqs;
+
+
+
+sqs=""+cel1;
+s0=bsp(sqs.length,s0,1,'\xA0');
+s2=bsp(sqs.length,s2,1,'\xA0');
+s1=s1+sqs;
+
+umd(tt1,zz1);
+s0=s0+srova;
+s2=s2+srovb;
+s1=s1+srovch;
+
+
+sqs=" + "+cel2;
+s0=bsp(sqs.length,s0,1,'\xA0');
+s2=bsp(sqs.length,s2,1,'\xA0');
+s1=s1+sqs;
+umd(tt2,zz1);
+s0=s0+srova;
+s2=s2+srovb;
+s1=s1+srovch;
+
+
+sqs=" + ";
+s0=bsp(sqs.length,s0,1,'\xA0');
+s2=bsp(sqs.length,s2,1,'\xA0');
+s1=s1+sqs;
+if (cel3!=0)
+{
+sqs=""+cel3;
+s0=bsp(sqs.length,s0,1,'\xA0');
+s2=bsp(sqs.length,s2,1,'\xA0');
+s1=s1+sqs;
+}
+
+
+if (tt3!=0)
+{
+umd(tt3,zz1);
+s0=s0+srova;
+s2=s2+srovb;
+s1=s1+srovch;
+}
+sqs=")";
+s0=bsp(sqs.length,s0,1,'\xA0');
+s2=bsp(sqs.length,s2,1,'\xA0');
+s1=s1+sqs;
+
+s=s0+"<br>"+s1+"<br>"+s2+"<br>";
+
+tq2=cel1*zz1-(-tt1)-(-zz1*cel2-tt2)-(-zz1*cel3-tt3);
+tz2=zz1;
+tq1=th;
+tz1=z1;
+res1=tq1*tq2/(tz1*tz2);
+sos1="Правильный ответ: "+res1;
+break;
+// 2 вариант задачи
+case 2:
+b=prr(50,200);
+k=prr(2,7);
+k1=prr(2,7);
+bb=Math.floor(b/14);
+a=prr(1,bb-1);
+a1=prr(1,bb-1);
+th=a*k-(-a1*k1);
+tz=b;
+der=evklid(th,tz);
+th=th/der;
+tz=tz/der;
+d=Math.floor(th/tz);
+t=th%tz;
+if (d==0) zn="";else zn=d+" ";
+if (t!=0) zn=zn+t+"/"+tz; 
+res1=zn;
+s0=a;
+s2=b;
+umd(s0,s2);
+s0=srova;
+s1=srovch;
+s2=srovb;
+rs0=s0;
+rs1=s1;
+rs2=s2;
+px0='\u2022'+k+" + ";
+rs0=bsp(px0.length,rs0,1,'\xA0');
+rs2=bsp(px0.length,rs2,1,'\xA0');
+rs1=rs1+px0;
+ss0=a1;
+ss2=b;
+umd(ss0,ss2);
+rs0=rs0+srova;
+rs1=rs1+srovch;
+rs2=rs2+srovb;
+rs1=rs1+'\u2022'+k1;
+s="Вычислить: <br>"+rs0+"<br>"+rs1+"<br>"+rs2;
+sos1="Правильный ответ: "+res1;
+break;
+case 3:
+k=prr(2,12);
+b=prr(10,30);
+a=prr(1,b-1);
+der=evklid(a,b);
+a=a/der;
+b=b/der;
+th=k*a;
+tz=b;
+der=evklid(th,tz);
+th=th/der;
+tz=tz/der;
+d=Math.floor(th/tz);
+t=th%tz;
+if (d==0) zn="";else zn=d+" ";
+if (t!=0) zn=zn+t+"/"+tz; 
+res1=zn;
+s0="x";
+s2=k;
+umd(s0,s2);
+s0=srova;
+s1=srovch;
+s2=srovb;
+px0=" = ";
+s0=bsp(px0.length,s0,1,'\xA0');
+s2=bsp(px0.length,s2,1,'\xA0');
+s1=s1+px0;
+ss0=a;
+ss2=b;
+umd(a,b);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+s="Решить уравнение:<br>"+s0+"<br>"+s1+"<br>"+s2;
+qs0=s0;
+qs1=s1;
+qs2=s2;
+px0=" => ";
+qs0=bsp(px0.length,qs0,1,'\xA0');
+qs2=bsp(px0.length,qs2,1,'\xA0');
+qs1=qs1+px0;
+ss0="x";
+ss2=k;
+umd(ss0,ss2);
+qs0=qs0+srova;
+qs1=qs1+srovch;
+qs2=qs2+srovb;
+px0='\u2022'+k+" = ";
+qs0=bsp(px0.length,qs0,1,'\xA0');
+qs2=bsp(px0.length,qs2,1,'\xA0');
+qs1=qs1+px0;
+ss0=a;
+ss2=b;
+umd(a,b);
+qs0=qs0+srova;
+qs1=qs1+srovch;
+qs2=qs2+srovb;
+px0='\u2022'+k;
+qs0=bsp(px0.length,qs0,1,'\xA0');
+qs2=bsp(px0.length,qs2,1,'\xA0');
+qs1=qs1+px0;
+px0=" => x = ";
+qs0=bsp(px0.length,qs0,1,'\xA0');
+qs2=bsp(px0.length,qs2,1,'\xA0');
+qs1=qs1+px0;
+ss0=a*k;
+ss2=b;
+umd(ss0,ss2);
+qs0=qs0+srova;
+qs1=qs1+srovch;
+qs2=qs2+srovb;
+if (tz!=b)
+{
+ if (tz==1) 
+ {
+  px0=" => x = "+th;
+  qs1=qs1+px0;
+ }
+ else
+ {
+px0=" => x = ";
+qs0=bsp(px0.length,qs0,1,'\xA0');
+qs2=bsp(px0.length,qs2,1,'\xA0');
+qs1=qs1+px0;
+ss0=th;
+ss2=tz;
+umd(ss0,ss2);
+qs0=qs0+srova;
+qs1=qs1+srovch;
+qs2=qs2+srovb;
+ if (d!=0)
+ {
+  px0=" => "+d;
+  qs0=bsp(px0.length,qs0,1,'\xA0');
+  qs2=bsp(px0.length,qs2,1,'\xA0');
+  qs1=qs1+px0;
+  if (t!=0)
+  {
+   umd(t,tz);
+   qs0=qs0+srova;
+   qs1=qs1+srovch;
+   qs2=qs2+srovb; 
+  }
+ } 
+ }
+}
+sos1=qs0+"<br>"+qs1+"<br>"+qs2+"<br>Правильный ответ: "+res1;
+break;
+case 4:
+k=prr(1,4);
+b=prr(2,50);
+a=prr(1,b-1);
+der=evklid(a,b);
+a=a/der;
+b=b/der;
+r=prr(2,15);
+th=(k*b-(-a))*r;
+tz=b;
+der=evklid(th,tz);
+th=th/der;
+tz=tz/der;
+d=Math.floor(th/tz);
+t=th%tz;
+if (d==0) zn="";else zn=""+d+" ";
+if (t!=0) zn=zn+t+"/"+tz;
+res1=zn;
+s1=""+k;
+s0="";
+s2="";
+s0=bsp(s1.length,s0,1,'\xA0');
+s2=bsp(s1.length,s2,1,'\xA0');
+umd(a,b);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+xs0='\u2022'+r;
+s0=bsp(xs0.length,s0,1,'\xA0');
+s2=bsp(xs0.length,s2,1,'\xA0');
+s1=s1+xs0;
+s="Вычислить<br>"+s0+"<br>"+s1+"<br>"+s2;
+ss0=s0;
+ss1=s1;
+ss2=s2;
+xs0=" = ";
+ss0=bsp(xs0.length,ss0,1,'\xA0');
+ss2=bsp(xs0.length,ss2,1,'\xA0');
+ss1=ss1+xs0;
+qs0=k*b-(-a);
+qs2=b;
+umd(qs0,qs2);
+ss0=ss0+srova;
+ss1=ss1+srovch;
+ss2=ss2+srovb;
+xs0='\u2022'+r;
+ss0=bsp(xs0.length,ss0,1,'\xA0');
+ss2=bsp(xs0.length,ss2,1,'\xA0');
+ss1=ss1+xs0;
+xs0=" = ";
+ss0=bsp(xs0.length,ss0,1,'\xA0');
+ss2=bsp(xs0.length,ss2,1,'\xA0');
+ss1=ss1+xs0;
+
+qs0=(k*b-(-a))*r;
+qs2=b;
+umd(qs0,qs2);
+ss0=ss0+srova;
+ss1=ss1+srovch;
+ss2=ss2+srovb;
+
+if (tz!=b)
+{
+xs0=" = ";
+ss0=bsp(xs0.length,ss0,1,'\xA0');
+ss2=bsp(xs0.length,ss2,1,'\xA0');
+ss1=ss1+xs0;
+qs0=th;
+qs2=tz;
+umd(qs0,qs2);
+ss0=ss0+srova;
+ss1=ss1+srovch;
+ss2=ss2+srovb;
+}
+if (d!=0)
+{
+xs0=" = "+d;
+ss0=bsp(xs0.length,ss0,1,'\xA0');
+ss2=bsp(xs0.length,ss2,1,'\xA0');
+ss1=ss1+xs0;
+ if (t!=0)
+ {
+  umd(t,tz);
+  ss0=ss0+srova;
+  ss1=ss1+srovch;
+  ss2=ss2+srovb;
+ } 
+}
+sos1=ss0+"<br>"+ss1+"<br>"+ss2+"<br>Правильный ответ: "+res1;
+
+break;
+
+
+case 5:
+k=prr(1,5);
+b=prr(1,8);
+x=prr(2,11);
+a1=k*x-(-b);
+b1=x;
+der=evklid(a1,b1);
+a1=a1/der;
+b1=b1/der;
+th=a1;
+tz=b1;
+d=Math.floor(a1/b1);
+t=a1%b1;
+s0=prv(k,1)+"x"+prv(b,2);
+s2="x";
+umd(s0,s2);
+s0=srova;
+s1=srovch;
+s2=srovb;
+xs0=" = "+d;
+s0=bsp(xs0.length,s0,1,'\xA0');
+s2=bsp(xs0.length,s2,1,'\xA0');
+s1=s1+xs0;
+if (t!=0)
+{
+ umd(t,b1);
+ s0=s0+srova;
+ s1=s1+srovch;
+ s2=s2+srovb;
+}
+ss0=s0;
+ss1=s1;
+ss2=s2;
+xs0=" => ";
+ss0=bsp(xs0.length,ss0,1,'\xA0');
+ss2=bsp(xs0.length,ss2,1,'\xA0');
+ss1=ss1+xs0;
+qs0=prv(k,1)+"x"+prv(b,2);
+qs2="x";
+umd(qs0,qs2);
+ss0=ss0+srova;
+ss1=ss1+srovch;
+ss2=ss2+srovb;
+xs0=" = ";
+ss0=bsp(xs0.length,ss0,1,'\xA0');
+ss2=bsp(xs0.length,ss2,1,'\xA0');
+ss1=ss1+xs0;
+umd(th,tz);
+ss0=ss0+srova;
+ss1=ss1+srovch;
+ss2=ss2+srovb;
+xs0=" => ";
+ss0=bsp(xs0.length,ss0,1,'\xA0');
+ss2=bsp(xs0.length,ss2,1,'\xA0');
+ss1=ss1+xs0;
+qs0=prv(k*tz,1)+"x"+prv(b*tz,2)+" = "+th+"x => ";
+ss1=ss1+qs0;
+qs0=" => "+th+"x = "+prv(k*tz,1)+"x"+prv(b*tz,2)+" => "+prv(th-k*tz,1)+"x = "+prv(b*tz,0)+" => x = "+x;
+
+if (d==0) zn="";else zn=""+d+" ";
+if (t!=0) zn=zn+t+"/"+b1;
+res1=x;
+s="Решить уравнение <br>"+s0+"<br>"+s1+"<br>"+s2;
+sos1="Равенство такого вида называется пропорция. Свойство пропорции: Произведения числителя одной дроби на знаменатель другой равны.<br>"+ss0+"<br>"+ss1+"<br>"+ss2+"<br>"+qs0+"<br>Правильный ответ: "+res1;
+
+break;
+case 6:
+//Первая дробь
+x2=prr(2,20);
+x1=prr(1,x2-1);
+der=evklid(x1,x2);
+x1=x1/der;
+x2=x2/der;
+//Вторая дробь
+x4=prr(2,20);
+x3=prr(1,x4-1);
+der=evklid(x3,x4);
+x3=x3/der;
+x4=x4/der;
+//Так определяется третья дробь
+thx1=x1*x4-(-x2*x3);
+tzx1=x2*x4;
+t=0;
+for (i=1;i<=thx1;i++)
+{
+ if (thx1%i==0)
+ {
+   t++;
+   mm[t]=i;
+ }
+}
+if (t>2)
+{
+ h0=prr(2,t-1);
+ x5=mm[h0];
+}
+else x5=mm[t];
+
+t=0;
+for (i=1;i<=tzx1;i++)
+{
+ if (tzx1%i==0)
+ {
+   t++;
+   mm[t]=i;
+ }
+}
+if (t>2)
+{
+ h0=prr(2,t-1);
+ x6=mm[h0];
+}
+else x6=mm[t];
+
+der=evklid(x5,x6);
+x5=x5/der;
+x6=x6/der;
+
+px50=Math.floor(x5/x6);
+px5=x5%x6;
+px6=x6;
+
+thx2=(x1*x4-(-x2*x3))*x6;
+tzx2=x2*x4*x5;
+der=evklid(thx2,tzx2);
+thx2=thx2/der;
+tzx2=tzx2/der;
+
+t=0;
+for (i=1;i<=tzx2;i++)
+{
+ if (tzx2%i==0)
+ {
+   t++;
+   mm[t]=i;
+ }
+}
+if (t>2)
+{
+ h0=prr(2,t-1);
+ x8=mm[h0];
+}
+else x8=mm[t];
+
+x7=prr(1,x8);
+x7=x7-(-prr(1,3)*x8);
+px70=Math.floor(x7/x8);
+px7=x7%x8;
+px8=x8;
+
+thx3=thx2*x8-(-tzx2*x7);
+tzx3=tzx2*x8;
+der=evklid(thx3,tzx3);
+thx3=thx3/der;
+tzx3=tzx3/der;
+
+
+k0=prr(1,5);
+x9=k0*tzx3;
+
+t=0;
+for (i=1;i<=thx3;i++)
+{
+ if (thx3%i==0)
+ {
+   t++;
+   mm[t]=i;
+ }
+}
+if (t>2)
+{
+ h0=prr(2,t-1);
+ x10=mm[h0];
+}
+else x10=mm[t];
+
+q0=thx3/x10;
+
+der=evklid(x9,x10);
+x9=x9/der;
+x10=x10/der;
+
+
+px90=Math.floor(x9/x10);
+px9=x9%x10;
+px10=x10;
+
+s0='\xA0'+'\xA0';
+s1="((";
+s2='\xA0'+'\xA0';
+umd(x1,x2);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+qs0=" + ";
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+umd(x3,x4);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+qs0=") : ";
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+if (px50!=0)
+{
+ qs0=""+px50;
+ s0=bsp(qs0.length,s0,1,'\xA0');
+ s2=bsp(qs0.length,s2,1,'\xA0');
+ s1=s1+qs0;
+}
+if (px5!=0)
+{
+ umd(px5,px6);
+ s0=s0+srova;
+ s1=s1+srovch;
+ s2=s2+srovb;
+}
+qs0=" + ";
+ s0=bsp(qs0.length,s0,1,'\xA0');
+ s2=bsp(qs0.length,s2,1,'\xA0');
+ s1=s1+qs0;
+if (px70!=0)
+{
+ qs0=""+px70;
+ s0=bsp(qs0.length,s0,1,'\xA0');
+ s2=bsp(qs0.length,s2,1,'\xA0');
+ s1=s1+qs0;
+}
+if (px7!=0)
+{
+ umd(px7,px8);
+ s0=s0+srova;
+ s1=s1+srovch;
+ s2=s2+srovb;
+}
+qs0=") "+'\u2022'+'\xA0';
+ s0=bsp(qs0.length,s0,1,'\xA0');
+ s2=bsp(qs0.length,s2,1,'\xA0');
+ s1=s1+qs0;
+if (px90!=0)
+{
+ qs0=""+px90;
+ s0=bsp(qs0.length,s0,1,'\xA0');
+ s2=bsp(qs0.length,s2,1,'\xA0');
+ s1=s1+qs0;
+}
+if (px9!=0)
+{
+ umd(px9,px10);
+ s0=s0+srova;
+ s1=s1+srovch;
+ s2=s2+srovb;
+}
+
+res1=q0*k0;
+s="Вычислить<br>"+s0+"<br>"+s1+"<br>"+s2;
+sos1="Правильный ответ: "+res1;
+break;
+case 8:
+ n=prr(6,17);
+ dn=2*n-(-1);
+ s="Найти сумму всех правильных дробей со знаменателем "+dn;
+ res1=n;
+ sos1="Правильный ответ: "+res1;
+break;
+
+
+}
+
+
+
+hosss="<table width=10%><tr><td>&nbsp;</td><td><input type=text size=4 name=ts1t1></td></tr><tr><td><input type=text size=4 name=ts0t1></td><td>"+'\u2014'+'\u2014'+'\u2014'+"</td></tr><tr><td>&nbsp;</td><td><input type=text size=4 name=ts2t1></td></tr></table>"
+
+document.write("<font face='Courier New'>");
+document.write("<h3>" +s+"</h3>");
+document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа, или в виде правильной дроби со взаимно простыми числителем и знаменателем.</p>");
+
+
+//document.write("<p>Если ответ целый, то ответ дайте в виде целого числа. Если в ответе есть дробная часть, то она должна быть в несократимом виде.</p>");
+document.write("<p><br>");
+document.write("</font>");
+//document.write(res1+"<br>");
+//simvol(1);
+
+
+
+document.write("<h3>"+hosss+"<input type=hidden name=t1 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris1' style='visibility:hidden'> <input type=text name=st1 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+
+
+}
+
+
+
+
+
+
+
+function t1z2()
+{
+var fifa=new Array();
+hhh=prr(5,6);
+switch(hhh)
+{
+case 1:
+a=prr(2,5);
+b=prr(2,5);
+c=prr(2,5);
+if (a<5) za=" части ";else za=" частей ";
+if (b<5) zb=" части ";else zb=" частей ";
+if (c<5) zc=" части ";else zc=" частей ";
+res2="1/"+(a*b*c);
+
+s="Хозяйка разрезала яблоко на "+a+za+". Каждую полученную часть она разрезала на "+b+zb+". Каждый маленький кусочек она порезала на "+c+zc+". Как записывается количество яблока, содержащегося в одном маленьком кусочке ?";
+sos2="Количество кусочков от каждого яблока....<br>Взято кусочков....<br>Количество яблока в одном кусочке....<br>Правильный ответ: "+res2;
+break;
+case 2:
+k=prr(2,6);
+a=prr(2,5);
+b=prr(2,5);
+c=prr(2,5);
+if (a<5) za=" части ";else za=" частей ";
+if (b<5) zb=" части ";else zb=" частей ";
+if (c<5) zc=" части ";else zc=" частей ";
+if (k<5) zk=" яблока. ";else zk=" яблок.";
+s="Хозяйка купила "+k+zk+"Каждое яблоко разрезала  на "+a+za+". Каждую полученную часть она разрезала на "+b+zb+". Каждый маленький кусочек она порезала на "+c+zc+". Как записывается количество покупки, содержащегося в одном маленьком кусочке ?";
+res2="1/"+(k*a*b*c);
+sos2="Количество кусочков от каждого яблока....<br>Всего кусочков от всех яблок....<br>Взято кусочков....<br>Количество покупки в одном кусочке....<br>Правильный ответ: "+res2;
+break;
+case 3:
+k=prr(5,12);
+a=prr(3,10);
+if (a<5) za=" кусочка.";else za=" кусочков";
+r=k*a;
+c=prr(1,r-1);
+der=evklid(c,r);
+c=c/der;
+r=r/der;
+if (r==1) res2=c;else res2=c+"/"+r;
+res2=c+"/"+r;
+s="Хозяйка купила "+k+" яблок. Каждое яблоко она порезала на "+a+" равных"+za+".Для приготовления мармелада кусочков она взяла "+c+". Как записывается часть покупки, которую взяла хозяйка для мармелада ?";
+sos2="Кусочков от каждого яблока...<br>Кусочков от всех яблок...<br>Взято кусочков...<br>Доля взятого от всех кусочков....<br>Правильный ответ:"+res2;
+
+break;
+case 4:
+k=prr(5,12);
+a=prr(3,10);
+if (a<5) za=" кусочка.";else za=" кусочков";
+r=k*a;
+c=prr(1,r-1);
+der=evklid(c,a);
+c=c/der;
+a=a/der;
+if (a==1) res2=c;else res2=c+"/"+a;
+
+s="Хозяйка купила "+k+" яблок. Каждое яблоко она порезала на "+a+" равных"+za+".Для приготовления салата кусочков она взяла "+c+". Как записывается часть яблока, которую взяла хозяйка для салата ?";
+sos2="Кусочков от каждого яблока...<br>Кусочков от всех яблок...<br>Взято кусочков...<br>Доля взятого от всех кусочков одного яблока....<br>Правильный ответ:"+res2;
+
+break;
+case 5:
+a=prr(7,20);
+b=prr(1,a-1);
+k=prr(6,20);
+
+
+d=k*a-(-b);
+res2=k-(-1);
+s="Хозяйка купила несколько яблок. Каждое яблоко порезала на "+a+" равных кусочков. Для приготовления мармелада кусочков она взяла "+d+". Какое наименьшее количество яблок могла купить хозяйка ?";
+
+sos2="Пусть x- количество яблок, которое купила хозяйка...<br>Кусочков от одного яблока....<br>Кусочков от всех яблок...<br>Взято кусочков...<br>Представим число "+d+" как делимое при делении на "+a+" с остатком....<br>Кусочков от всех яблок должно быть больше, чем взято кусочков, поэтому.....<br>Правильный ответ: "+res2;
+break;
+case 6:
+a=prr(10,30);
+m=prr(2,7);
+q=prr(10,20);
+qq=Math.floor(q/3);
+p=prr(3,qq);
+der=evklid(p,q);
+p=p/der;
+q=q/der;
+mdh=m*(q-p);
+mdz=q;
+//Это была масса детали
+kt=0;
+rh=a*m;
+rz=1;
+while(rh-m*rz>=0)
+{
+ kt++;
+// rhh=rh-rz*m;
+// rzz=rz;
+// der=evklid(rhh,rzz);
+// rh=rhh/der;
+// rz=rzz/der;  
+ rh=rh-m*rz;
+ rhh=rh*q-(-m*p*rz);
+ rzz=rz*q;
+ der=evklid(rhh,rzz);
+ rh=rhh/der;
+ rz=rzz/der;  
+}
+
+
+//k=Math.floor(a*q/(q-p));
+k=kt;
+
+s="Имеются заготовки для деталей в количестве "+a+" штук. Масса каждой заготовки "+m+" кг. При изготовлении детали заготовку обрабатывают, при этом "+p+"/"+q+" металла уходит в отходы. Эти отходы собирают, переплавляют и из полученного металла делают такие же заготовки, отходы от которых снова переплавляют и снова делают заготовки. Какое максимальное количество деталей можно сделать из первоначально имеющихся заготовок ?";
+res2=k;
+gig=0;
+pp1=a*m;
+pz1=1;
+pp2=a;
+pz2=1;
+pp3=0;
+pz3=1;
+pp4=a*m*p;
+pz4=q;
+der=evklid(pp4,pz4);
+pp4=pp4/der;
+pz4=pz4/der;
+pp5=pp4*pz3-(-pp3*pz4);
+pz5=pz4*pz3;
+der=evklid(pp5,pz5);
+pp5=pp5/der;
+pz5=pz5/der;
+
+
+
+sos2="<table width=100% border=1><tr><td>Количество металла (кг)</td><td>Количество заготовок (штук)</td><td>Остаток металла (кг)</td><td>Количество отходов (кг)</td><td>Количество металла для новых заготовок (кг)</td></tr>";
+pok=0;
+do
+{
+ if (pok!=0) pok++;
+
+ if (pz1==1) zpp1=pp1;else zpp1=pp1+"/"+pz1;
+ if (pz2==1) zpp2=pp2;else zpp2=pp2+"/"+pz2;
+ if (pz3==1) zpp3=pp3;else zpp3=pp3+"/"+pz3;
+ if (pz4==1) zpp4=pp4;else zpp4=pp4+"/"+pz4;
+ if (pz5==1) zpp5=pp5;else zpp5=pp5+"/"+pz5;
+sos2=sos2+"<tr><td>"+zpp1+"</td><td>"+zpp2+"</td><td>"+zpp3+"</td><td>"+zpp4+"</td><td>"+zpp5+"</td></tr>";
+gig++;
+fifa[gig]=pp2;
+pp1=pp5;
+pz1=pz5;
+pp2=Math.floor(pp1/(pz1*m));
+pz2=1;
+pp3=pp1-(pp2*pz1*m);
+pz3=pz1;
+der=evklid(pp3,pz3);
+pp3=pp3/der;
+pz3=pz3/der;
+pp4=pp2*m*p;
+pz4=q;
+der=evklid(pp4,pz4);
+pp4=pp4/der;
+pz4=pz4/der;
+pp5=pp4*pz3-(-pp3*pz4);
+pz5=pz4*pz3;
+der=evklid(pp5,pz5);
+pp5=pp5/der;
+pz5=pz5/der;
+if (pp5-m*pz5<0) pok++
+}
+while (pok<2);
+
+sos2=sos2+"</table>";
+sos2=sos2+"<br>Так как из оставшегося металла уже нельзя сделать ни одной заготовки, то весь процесс заканчивается. За все это время деталей будет сделано столько, сколько было изготовлено заготовок, а именно <br>";
+for (i=1;i<=gig;i++)
+{
+sos2=sos2+fifa[i]+" ";
+if (i==gig) sos2=sos2+"= ";else sos2=sos2+"+ ";
+}
+sos2=sos2+res2+"<br>Правильный ответ: "+res2;
+break;
+}
+hosss="<table width=10%><tr><td>&nbsp;</td><td><input type=text size=4 name=ts1t2></td></tr><tr><td><input type=text size=4 name=ts0t2></td><td>"+'\u2014'+'\u2014'+'\u2014'+"</td></tr><tr><td>&nbsp;</td><td><input type=text size=4 name=ts2t2></td></tr></table>"
+
+
+ document.write("<font face='Courier New'>");
+ document.write("<h3>" +s+"</h3>");
+//document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа, или в виде правильной дроби со взаимно простыми числителем и знаменателем.</p>");
+document.write("<p>Ответ дайте в виде целого числа или десятичной дроби. Разделителем между целой и дробной частью должна быть запятая.</p>");
+
+
+document.write("</font>");
+//document.write(res2+"<br>");
+//simvol(2);
+document.write("<h3><input type=text name=t2 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris2' style='visibility:hidden'> <input type=text name=st2 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+
+}
+
+
+
+
+function t1z3()
+{
+hhh=prr(1,2);
+switch(hhh)
+{
+case 1:
+ b=prr(5,30);
+ a=prr(1,b-1);
+ d=prr(5,30); 
+ c=prr(1,d-1);
+ der=evklid(a,b);
+ a=a/der;
+ b=b/der;
+ der=evklid(c,d);
+ c=c/der;
+ d=d/der;
+ a1=b;
+ b1=a;
+ c1=d;
+ d1=c;
+ px10=Math.floor(a1/b1);
+ px11=a1%b1;
+ px12=b1;
+ px20=Math.floor(c1/d1);
+ px21=c1%d1;
+ px22=d1;
+ppx0=prr(12,30);
+ppx2=prr(10,30);
+ppx1=prr(1,ppx2-1);
+der=evklid(ppx1,ppx2);
+ppx1=ppx1/der;
+ppx2=ppx2/der;
+res3="";
+if (ppx0!=0) res3=res3+ppx0;
+if (ppx1!=0) res3=res3+" "+ppx1+"/"+ppx2;
+ist1=ppx0*ppx2-(-ppx1);
+ist2=ppx2;
+umd(a,b);
+s0=srova;
+s1=srovch;
+s2=srovb;
+qs0='\xA0'+'\u2022'+'\xA0';
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+umd(c,d);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+qs0='\xA0'+'\u2022'+'\xA0';
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+umd(ist1,ist2);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+qs0='\xA0'+'\u2022'+'\xA0';
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+if (px10!=0)
+{
+qs0=""+px10;
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+}
+if (px11!=0)
+{
+ umd(px11,px12);
+ s0=s0+srova;
+ s1=s1+srovch;
+ s2=s2+srovb;
+}
+qs0='\xA0'+'\u2022'+'\xA0';
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+if (px20!=0)
+{
+qs0=""+px20;
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+}
+if (px21!=0)
+{
+ umd(px21,px22);
+ s0=s0+srova;
+ s1=s1+srovch;
+ s2=s2+srovb;
+}
+s="Вычислить<br>"+s0+"<br>"+s1+"<br>"+s2;
+sos3="Правильный ответ: "+res3;
+
+break;
+case 2:
+ b=prr(5,30);
+ a=prr(1,b-1);
+ d=prr(5,30); 
+ c=prr(1,d-1);
+ der=evklid(a,b);
+ a=a/der;
+ b=b/der;
+ der=evklid(c,d);
+ c=c/der;
+ d=d/der;
+ a1=b;
+ b1=a;
+ c1=d;
+ d1=c;
+ px10=Math.floor(a1/b1);
+ px11=a1%b1;
+ px12=b1;
+
+ px20=Math.floor(c1/d1);
+ px21=c1%d1;
+ px22=d1;
+ 
+q1=prr(1,99);
+q2=prr(1,99);
+q3=prr(1,99);
+tq1=q1/1000;
+tq2=q2/1000;
+tq3=q3/1000;
+
+bb=""+tq1;
+bbs="";
+k=bb.length;
+for (i=1;i<=k;i++)
+{
+ if (bb.charAt(i-1)=='.')
+ bbs=bbs+",";
+ else
+ bbs=bbs+bb.charAt(i-1);
+}
+sq1=bbs;
+
+bb=""+tq2;
+bbs="";
+k=bb.length;
+for (i=1;i<=k;i++)
+{
+ if (bb.charAt(i-1)=='.')
+ bbs=bbs+",";
+ else
+ bbs=bbs+bb.charAt(i-1);
+}
+sq2=bbs;
+
+bb=""+tq3;
+bbs="";
+k=bb.length;
+for (i=1;i<=k;i++)
+{
+ if (bb.charAt(i-1)=='.')
+ bbs=bbs+",";
+ else
+ bbs=bbs+bb.charAt(i-1);
+}
+sq3=bbs;
+th1=q1-(-q2);
+tz1=q3;
+der=evklid(th1,tz1);
+th1=th1/der;
+tz1=tz1/der;
+
+pth0=Math.floor(th1/tz1);
+pth1=th1%tz1;
+pth2=tz1;
+res3="";
+if (pth0!=0) res3=res3+pth0;
+if (pth1!=0) res3=res3+" "+pth1+"/"+pth2;
+
+umd(a,b);
+s0=srova;
+s1=srovch;
+s2=srovb;
+qs0='\u2022';
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+qs0=sq1;
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+qs0='\u2022';
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+if (px10!=0)
+{
+qs0=""+px10;
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+}
+if (px11!=0)
+{
+ umd(px11,px12);
+ s0=s0+srova;
+ s1=s1+srovch;
+ s2=s2+srovb;
+}
+qs0=" + ";
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+
+umd(c,d);
+s0=s0+srova;
+s1=s1+srovch;
+s2=s2+srovb;
+qs0='\u2022';
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+qs0=sq2;
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+qs0='\u2022';
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+if (px20!=0)
+{
+qs0=""+px20;
+s0=bsp(qs0.length,s0,1,'\xA0');
+s2=bsp(qs0.length,s2,1,'\xA0');
+s1=s1+qs0;
+}
+if (px21!=0)
+{
+ umd(px21,px22);
+ s0=s0+srova;
+ s1=s1+srovch;
+ s2=s2+srovb;
+}
+umd(s0,sq3);
+s3=srovch;
+s4=srovb;
+s="Вычислить<br>"+s0+"<br>"+s1+"<br>"+s2+"<br>"+s3+"<br>"+s4;
+sos3="Правильный ответ: "+res3;
+
+
+break;
+}
+hosss="<table width=10%><tr><td>&nbsp;</td><td><input type=text size=4 name=ts1t3></td></tr><tr><td><input type=text size=4 name=ts0t3></td><td>"+'\u2014'+'\u2014'+'\u2014'+"</td></tr><tr><td>&nbsp;</td><td><input type=text size=4 name=ts2t3></td></tr></table>"
+
+
+
+document.write("<font face='Courier New'>");
+
+document.write("<h3>"+s+ "</h3>");
+
+document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа, или в виде правильной дроби со взаимно простыми числителем и знаменателем.</p>");
+
+//document.write("<p>Если ответ целый, то ответ дайте в виде целого числа. Если в ответе есть дробная часть, то она должна быть в несократимом виде.</p>");
+
+
+
+//document.write(res3+"<br>");
+//simvol(3);
+document.write("<h3>"+hosss+"<input type=hidden name=t3 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris3' style='visibility:hidden;font-size:14'> <input type=text name=st3 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+}
+
+function t1z4()
+{
+hhh=prr(1,2);
+switch (hhh)
+{
+case 1:
+var sl1=new Array(12);
+var sl2=new Array(12);
+var sl3=new Array(12);
+var m=new Array(12);
+
+a1=prr(1,3);//Целая часть первого слагаемого
+a2=prr(1,3);//Целая часть второго слагаемого
+b1=prr(1,3);//Дробные части
+b2=prr(1,3);
+if (a1>a2) q1=a1;else q1=a2;
+if (b1>b2) q2=b1;else q2=b2;
+for (i=1;i<11;i++)
+{
+ sl1[i]=0;
+ sl2[i]=0;
+ sl3[i]=0;
+}
+q11=6-a1;
+q12=5-(-b1);
+for (i=q11;i<=q12;i++)
+sl1[i]=prr(1,10)-1;
+if (sl1[q11]==0) sl1[q11]=prr(1,9);
+
+q21=6-a2;
+q22=5-(-b2);
+for (i=q21;i<=q22;i++)
+sl2[i]=prr(1,10)-1;
+if (sl2[q21]==0) sl2[q21]=prr(1,9);
+
+os=0;
+for (i=10;i>0;i--)
+{
+ k=sl1[i]-(-sl2[i])-(-os);
+ os=Math.floor(k/10);
+ sl3[i]=k%10;
+}
+////
+//Поменять местами 1-ое слагаемое и сумму.
+for (i=1;i<11;i++)
+{
+ dd=sl1[i];
+ sl1[i]=sl3[i];
+ sl3[i]=dd;
+}
+
+
+
+
+tt=0;
+for (i=1;i<11;i++)
+{
+m[i]=sl1[i];
+}
+
+for (i=1;i<11;i++)
+{
+ if (sl1[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+tt=0;
+for (i=10;i>5;i--)
+{
+ if (sl1[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+s0="";s1="";
+for (i=1;i<6;i++)
+{
+ if (m[i]<10)
+ s0=s0+m[i];
+}
+for (i=6;i<11;i++)
+{
+ if (m[i]<10)
+ s1=s1+m[i];
+}
+s2=s0;
+if (m[6]<10)
+s2=s2+","+s1;
+ss0=s2;
+/////
+
+tt=0;
+for (i=1;i<11;i++)
+{
+m[i]=sl2[i];
+}
+
+for (i=1;i<11;i++)
+{
+ if (sl2[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+tt=0;
+for (i=10;i>5;i--)
+{
+ if (sl2[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+s0="";s1="";
+for (i=1;i<6;i++)
+{
+ if (m[i]<10)
+ s0=s0+m[i];
+}
+for (i=6;i<11;i++)
+{
+ if (m[i]<10)
+ s1=s1+m[i];
+}
+s2=s0;
+if (m[6]<10)
+s2=s2+","+s1;
+ss1=s2;
+
+///Для результата
+
+tt=0;
+for (i=1;i<11;i++)
+{
+m[i]=sl3[i];
+}
+
+for (i=1;i<11;i++)
+{
+ if (sl3[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+
+
+tt=0;
+for (i=10;i>5;i--)
+{
+ if (sl3[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+}
+s0="";s1="";
+for (i=1;i<6;i++)
+{
+ if (m[i]<10)
+ s0=s0+m[i];
+}
+for (i=6;i<11;i++)
+{
+ if (m[i]<10)
+ s1=s1+m[i];
+}
+s2=s0;
+if (m[6]<10)
+s2=s2+","+s1;
+ss2=s2;
+res4=ss2;
+s="Решить уравнение  "+"x + "+ss1+" = "+ss0;
+
+
+////
+tt=0;
+for (i=1;i<11;i++)
+{
+ if (tt==0)
+  {
+   if ((sl1[i]==0) && (sl2[i]==0) && (sl3[i]==0))
+    {
+     sl1[i]=10;sl2[i]=10;sl3[i]=10;
+    }
+    else
+    {
+     tt=1;
+    }
+  }
+}
+
+tt=0;
+for (i=10;i>5;i--)
+{
+ if (tt==0)
+  {
+   if ((sl1[i]==0) && (sl2[i]==0) && (sl3[i]==0))
+    {
+     sl1[i]=10;sl2[i]=10;sl3[i]=10;
+    }
+    else
+    {
+     tt=1;
+    }
+  }
+}
+ps0="";ps1="";ps2="";
+for (i=1;i<6;i++)
+{
+ if (sl1[i]<10) ps0=ps0+sl1[i];
+ if (sl2[i]<10) ps1=ps1+sl2[i];
+ if (sl3[i]<10) ps2=ps2+sl3[i];
+}
+pps0="";pps1="";pps2="";
+for (i=6;i<11;i++)
+{
+ if (sl1[i]<10) pps0=pps0+sl1[i];
+ if (sl2[i]<10) pps1=pps1+sl2[i];
+ if (sl3[i]<10) pps2=pps2+sl3[i];
+}
+
+qs0=ps0;qs1=ps1;qs2=ps2;
+if (sl1[6]<10) qs0=qs0+","+pps0;
+if (sl2[6]<10) qs1=qs1+","+pps1;
+if (sl3[6]<10) qs2=qs2+","+pps2;
+umd(qs0,qs1);
+sss0='\xA0'+srova;
+sss1="-";
+sss2='\xA0'+srovb;
+umd(qs1,qs2);
+sss3='\xA0'+srovch;
+sss4='\xA0'+srovb;
+sos4="Последнее действие в левой части сложение. Отменяющее действие вычитание.<br>"+s+" => x = "+ss0+"-"+ss1+"<br>"+sss0+"<br>"+sss1+"<br>"+sss2+"<br>"+sss3+"<br>"+sss4+"<br>Правильный ответ: "+res4;
+
+
+break;
+case 2:
+var sl1=new Array(12);
+var sl2=new Array(12);
+var sl3=new Array(12);
+var m=new Array(12);
+
+a1=prr(1,3);
+a2=prr(1,3);
+b1=prr(1,3);
+b2=prr(1,3);
+if (a1>a2) q1=a1;else q1=a2;
+if (b1>b2) q2=b1;else q2=b2;
+for (i=1;i<11;i++)
+{
+ sl1[i]=0;
+ sl2[i]=0;
+ sl3[i]=0;
+}
+q11=6-a1;
+q12=5-(-b1);
+for (i=q11;i<=q12;i++)
+sl1[i]=prr(1,10)-1;
+if (sl1[q11]==0) sl1[q11]=prr(1,9);
+
+q21=6-a2;
+q22=5-(-b2);
+for (i=q21;i<=q22;i++)
+sl2[i]=prr(1,10)-1;
+if (sl2[q21]==0) sl2[q21]=prr(1,9);
+
+os=0;
+for (i=10;i>0;i--)
+{
+ k=sl1[i]-(-sl2[i])-(-os);
+ os=Math.floor(k/10);
+ sl3[i]=k%10;
+}
+////
+//Поменять местами 1-ое слагаемое и сумму.
+
+
+
+
+tt=0;
+for (i=1;i<11;i++)
+{
+m[i]=sl1[i];
+}
+
+for (i=1;i<11;i++)
+{
+ if (sl1[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+tt=0;
+for (i=10;i>5;i--)
+{
+ if (sl1[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+s0="";s1="";
+for (i=1;i<6;i++)
+{
+ if (m[i]<10)
+ s0=s0+m[i];
+}
+for (i=6;i<11;i++)
+{
+ if (m[i]<10)
+ s1=s1+m[i];
+}
+s2=s0;
+if (m[6]<10)
+s2=s2+","+s1;
+ss0=s2;
+/////
+
+tt=0;
+for (i=1;i<11;i++)
+{
+m[i]=sl2[i];
+}
+
+for (i=1;i<11;i++)
+{
+ if (sl2[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+tt=0;
+for (i=10;i>5;i--)
+{
+ if (sl2[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+s0="";s1="";
+for (i=1;i<6;i++)
+{
+ if (m[i]<10)
+ s0=s0+m[i];
+}
+for (i=6;i<11;i++)
+{
+ if (m[i]<10)
+ s1=s1+m[i];
+}
+s2=s0;
+if (m[6]<10)
+s2=s2+","+s1;
+ss1=s2;
+
+///Для результата
+
+tt=0;
+for (i=1;i<11;i++)
+{
+m[i]=sl3[i];
+}
+
+for (i=1;i<11;i++)
+{
+ if (sl3[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+
+}
+
+
+tt=0;
+for (i=10;i>5;i--)
+{
+ if (sl3[i]==0)
+ {
+  if (tt==0) m[i]=10; else tt=1;
+ }
+ else tt=1;
+}
+s0="";s1="";
+for (i=1;i<6;i++)
+{
+ if (m[i]<10)
+ s0=s0+m[i];
+}
+for (i=6;i<11;i++)
+{
+ if (m[i]<10)
+ s1=s1+m[i];
+}
+s2=s0;
+if (m[6]<10)
+s2=s2+","+s1;
+ss2=s2;
+res4=ss2;
+s="Решить уравнение  "+"x - "+ss1+" = "+ss0;
+
+
+////
+tt=0;
+for (i=1;i<11;i++)
+{
+ if (tt==0)
+  {
+   if ((sl1[i]==0) && (sl2[i]==0) && (sl3[i]==0))
+    {
+     sl1[i]=10;sl2[i]=10;sl3[i]=10;
+    }
+    else
+    {
+     tt=1;
+    }
+  }
+}
+
+tt=0;
+for (i=10;i>5;i--)
+{
+ if (tt==0)
+  {
+   if ((sl1[i]==0) && (sl2[i]==0) && (sl3[i]==0))
+    {
+     sl1[i]=10;sl2[i]=10;sl3[i]=10;
+    }
+    else
+    {
+     tt=1;
+    }
+  }
+}
+ps0="";ps1="";ps2="";
+for (i=1;i<6;i++)
+{
+ if (sl1[i]<10) ps0=ps0+sl1[i];
+ if (sl2[i]<10) ps1=ps1+sl2[i];
+ if (sl3[i]<10) ps2=ps2+sl3[i];
+}
+pps0="";pps1="";pps2="";
+for (i=6;i<11;i++)
+{
+ if (sl1[i]<10) pps0=pps0+sl1[i];
+ if (sl2[i]<10) pps1=pps1+sl2[i];
+ if (sl3[i]<10) pps2=pps2+sl3[i];
+}
+
+qs0=ps0;qs1=ps1;qs2=ps2;
+if (sl1[6]<10) qs0=qs0+","+pps0;
+if (sl2[6]<10) qs1=qs1+","+pps1;
+if (sl3[6]<10) qs2=qs2+","+pps2;
+umd(qs0,qs1);
+sss0='\xA0'+srova;
+sss1="+";
+sss2='\xA0'+srovb;
+umd(qs1,qs2);
+sss3='\xA0'+srovch;
+sss4='\xA0'+srovb;
+sos4="Последнее действие в левой части вычитание. Отменяющее действие сложение.<br>"+s+" => x = "+ss0+"+"+ss1+"<br>"+sss0+"<br>"+sss1+"<br>"+sss2+"<br>"+sss3+"<br>"+sss4+"<br>Правильный ответ: "+res4;
+
+
+break;
+
+}
+
+hosss="<table width=10%><tr><td>&nbsp;</td><td><input type=text size=4 name=ts1t4></td></tr><tr><td><input type=text size=4 name=ts0t4></td><td>"+'\u2014'+'\u2014'+'\u2014'+"</td></tr><tr><td>&nbsp;</td><td><input type=text size=4 name=ts2t4></td></tr></table>"
+
+
+
+
+
+
+
+
+
+document.write("<font face='Courier New'>");
+document.write("<h3>"+s+"</h3>");
+
+document.write("<p>Ответ дайте в виде целого числа или десятичной дроби. Разделителем между целой и дробной частью должна быть запятая.</p>");
+
+//document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа.</p>");
+//document.write(res4+"<br>");
+//simvol(4);
+document.write("<h3><input type=text name=t4 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris4' style='visibility:hidden'> <input type=text name=st4 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+}
+
+
+
+
+
+
+function t1z5()
+{
+do
+{
+hh=prr(1,6);
+}
+while ((hh==5) || (hh==4));
+switch(hh)
+{
+case 1:
+x=prr(1,99);
+a=prr(1,99);
+a1=100-a;
+b=a*x;
+b1=a1*x;
+v=10*x;
+s="В ящике лежит "+v+" кг пшена. В мешок переложили "+a+"% пшена. Сколько кг пшена осталось в ящике ?";
+res5=b1/10;
+bb=""+res5;
+bbs="";
+k=bb.length;
+for (i=1;i<=k;i++)
+{
+ if (bb.charAt(i-1)=='.')
+ bbs=bbs+",";
+ else
+ bbs=bbs+bb.charAt(i-1);
+}
+res5=bbs;
+sos5="Правильный ответ: "+res5;
+break;
+case 2:
+x=prr(1,99);
+a=prr(1,99);
+a1=100-a;
+b=a*x;
+b1=a1*x;
+v=10*x;
+s="В ящике лежит "+v+" кг пшена. В мешок переложили "+a+"% пшена. Сколько кг пшена переложили в мешок ?";
+res5=b/10;
+bb=""+res5;
+bbs="";
+k=bb.length;
+for (i=1;i<=k;i++)
+{
+ if (bb.charAt(i-1)=='.')
+ bbs=bbs+",";
+ else
+ bbs=bbs+bb.charAt(i-1);
+}
+res5=bbs;
+sos5="Правильный ответ: "+res5;
+break;
+case 3:
+a=prr(7,29);
+b=prr(8,31);
+c=prr(66,100);
+d=a*b;
+dd=a*c;
+res5=dd;
+s=b+"% числа равны "+d+". Чему равны "+c+"% этого числа ?";
+sos5="Правильный ответ: "+res5;
+break;
+case 4:
+a=prr(11,19);
+b=prr(1,9);
+a1=(a-10)*10;
+b1=(10-b)*10;
+c=a*b;
+if (c<100) s1=" уменьшилась ";else s1=" увеличилась ";
+res5=Math.abs(100-c);
+s="Цену товара сначала увеличили на "+a1+"%, а потом снизили на "+b1+"%. На сколько процентов"+s1+"цена по сравнению с первоначальной ?";
+sos5="Правильный ответ: "+res5;
+break;
+case 5:
+do
+{
+a=prr(1,9);
+b=prr(1,9);
+}
+while (a>=b);
+a1=a/10;
+b1=b/10;
+k1=100-a*b;
+k2=100-10*b;
+x=prr(3,50)*10;
+s="В "+x+" кг фруктов содержится "+k1+"% воды. Через некоторое время содержание воды снизилось до "+k2+"%. Сколько (кг) теперь весят фрукты ?";
+res5=x*a/10;
+sos5="Правильный ответ: "+res5;
+break;
+case 6:
+a=prr(21,79);
+b=prr(2,5);
+c=a*b;
+d=b*100;
+res5=d;
+s="В мешок добавили "+c+" кг песка, в результате чего он стал тяжелее на "+a+"%. Чему равна первоначальная масса мешка ?";
+sos5="Правильный ответ: "+res5;
+break;
+
+
+
+
+
+
+}
+
+
+hosss="<table width=10%><tr><td>&nbsp;</td><td><input type=text size=4 name=ts1t5></td></tr><tr><td><input type=text size=4 name=ts0t5></td><td>"+'\u2014'+'\u2014'+'\u2014'+'\u2014'+'\u2014'+"</td></tr><tr><td>&nbsp;</td><td><input type=text size=4 name=ts2t5></td></tr></table>"
+ document.write("<font face='Courier New'>");
+ document.write("<h3>"+s+"</h3>");
+
+//document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа.</p>");
+document.write("<p>Ответ дайте в виде целого числа или десятичной дроби. Разделителем между целой и дробной частью должна быть запятая.</p>");
+
+
+//document.write(res5+"<br>");
+//simvol(5);
+document.write("<h3><input type=text name=t5 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris5' style='visibility:hidden;'> <input type=text name=st5 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+document.write("<input type=hidden name=otv value=''>");
+
+}
+
+function t1z6()
+{
+x=prr(1,10);
+a=prr(1,50);
+a1=100-a;
+b=prr(1,a1-1);
+b1=a1-b;
+c=100-(a-(-b));
+d=c*x;
+res6=100*x;
+s="В питомнике "+a+"% всех собак- овчарки,"+b+"% всех собак- пудели, остальные собаки- ротвейлеры. Сколько всего собак в питомнике, если ротвейлеров "+d+"?";
+sos6="Правильный ответ: "+res6;
+sos6="Всех собак в питомнике в процентах 100%.<br>Ротвейлеров в процентах (100-"+a+"-"+b+")="+c+"%. Пусть количество всех собак равно x. Тогда ротвейлеров "+c+"% от x = "+c/100+'\u2022'+"x.<br>По условию это количество равно "+d+". отсюда получается уравнение<br>"+c/100+'\u2022'+"x = "+d+" => "+c+'\u2022'+"x = "+100*d+" => x = "+res6+"<br>Правильный ответ: "+res6; 
+
+ document.write("<font face='Courier New'>");
+ document.write("<h3>"+s+"</h3>");
+
+//document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа.</p>");
+document.write("<p>Ответ дайте в виде целого числа или десятичной дроби. Разделителем между целой и дробной частью должна быть запятая.</p>");
+
+
+document.write("<h3><input type=text name=t6 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris6' style='visibility:hidden;'> <input type=text name=st6 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+document.write("<input type=hidden name=otv value=''>");
+
+}
+
+function t1z7()
+{
+do
+{
+hhh=prr(1,6);
+}
+while(hhh==3);
+
+switch(hhh)
+{
+case 1:
+a=prr(3,10);
+b=prr(2,10);
+t=prr(3,16);
+r=(a-(-b))*t;
+res7=t;
+s="Из двух городов, расстояние между которыми "+r+" км одновременно навстречу друг другу вышли два пешехода. Первый проходит за каждый час "+a+" км, а второй проходит за каждый час "+b+" км. Через сколько часов пешеходы встретятся ?";
+sos7="Правильный ответ :"+res7;
+break;
+case 2:
+do
+{
+a=prr(3,10);
+b=prr(2,10);
+}
+while (a==b);
+if (a>b)
+{
+ a1=a;
+ b1=b;
+}
+else
+{
+ a1=b;
+ b1=a;
+}
+q=a1-b1;
+t=prr(3,16);
+r=q*t;
+res7=t;
+s="Из двух городов, расстояние между которыми "+r+" км одновременно в одном направлении вышли два пешехода. Первый проходит за каждый час "+b1+" км, а второй, который догоняет, проходит за каждый час "+a1+" км. Через сколько часов второй пешеход догонит первого ?";
+sos7="Правильный ответ :"+res7;
+
+break;
+
+
+case 3:
+a=prr(2,5);
+k=prr(2,5);
+res7=a;
+d=Math.floor((k*a)/(k+1));
+c=k*a-d*(k+1);
+t=60/(k+1);
+m=c*t;
+if (k==5) zn=" раз ";else zn=" раза ";
+if (d==0) zn1="";else zn1=d+" ч";
+if (m==0) zn2="";else zn2=m+" м";
+
+s="Один из рабочих может выполнить работу в "+k+zn +"быстрее, чем второй. А если они будут работать вместе, то выполнят работу за  "+zn1+" " +zn2+".За какое время может выполнить работу быстрый рабочий ?"; 
+sos7="Правильный ответ :"+res7;
+break;
+case 4:
+a=prr(8,16);
+b=prr(1,4);
+t1=prr(2,7);
+t2=prr(2,7);
+r=(a+b)*t1+(a-b)*t2;
+res7=a;
+s="Моторная лодка двигалась "+t1+" ч по течению реки и "+t2+" ч против течения реки. За все это время  лодка прошла "+r+" км. Найти собственную скорость лодки, если скорость течения реки "+b+" км/ч"; 
+sos7="Правильный ответ :"+res7;
+break;
+case 5:
+x=prr(8,16);
+y=prr(1,4);
+a=x+y;
+b=x-y;
+der=evklid(a,b);
+c=a*b/der;
+k=prr(1,5);
+r=c*k;
+t1=r/a;
+t2=r/b;
+res7=x;
+s="Расстояние, равное "+r+ " км, моторная лодка по течению реки проходит за "+t1+" ч, а против течения реки за "+t2+" ч. Найти собственную скорость лодки.";
+sos7="Правильный ответ :"+res7;
+break;
+case 6:
+b=prr(2,7);
+a=prr(1,b-1);
+der=evklid(a,b);
+a=a/der;
+b=b/der;
+c=prr(2,8);
+z=c*b;
+k=prr(1,z-1);
+r=z-k;
+t1=r;
+t2=a;
+der=evklid(t1,t2);
+t1=t1/der;
+t2=t2/der;
+d=k*prr(3,10);
+res7=d*c*b/k;
+if (t2<7)
+{
+switch (t2)
+{
+ case 1:ss1=t1+" ч ";break;
+ case 2:s01=Math.floor(t1/t2);s02=t1%t2;ss1=s01+" ч "+s02*30+" мин. ";break;
+ case 3:s01=Math.floor(t1/t2);s02=t1%t2;ss1=s01+" ч "+s02*20+" мин. ";break;
+ case 4:s01=Math.floor(t1/t2);s02=t1%t2;ss1=s01+" ч "+s02*15+" мин. ";break;
+ case 5:s01=Math.floor(t1/t2);s02=t1%t2;ss1=s01+" ч "+s02*12+" мин. ";break;
+ case 6:s01=Math.floor(t1/t2);s02=t1%t2;ss1=s01+" ч "+s02*10+" мин. ";break;
+}
+}
+else
+ ss1=t1+"/"+t2+" ч ";
+
+s="Насос может выкачать из бассейна "+a+"/"+b+" воды за "+c+ " ч. Проработав "+ss1+", насос остановился. Найти вместимость бассейна, если после остановки в бассейне еше осталось "+d+" м<sup>3</sup> воды.<br>";
+sos7="Правильный ответ :"+res7;
+
+break;
+
+}
+
+ document.write("<font face='Courier New'>");
+ document.write("<h3>"+s+"</h3>");
+
+//document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа.</p>");
+document.write("<p>Ответ дайте в виде целого числа или десятичной дроби. Разделителем между целой и дробной частью должна быть запятая.</p>");
+
+
+document.write("<h3><input type=text name=t7 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris7' style='visibility:hidden;'> <input type=text name=st7 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+document.write("<input type=hidden name=otv value=''>");
+
+}
+
+function t1z8()
+{
+hhh=prr(1,3);
+switch(hhh)
+{
+case 1:
+b=prr(49,84);
+n=prr(37,89);
+z=b*n;
+z1=Math.floor(z/3);
+z2=z-z1;
+z3=prr(5,z2-1);
+z4=z-z1-z3;
+b=b/100;
+z1=z1/10;
+z3=z3/10;
+z4=z4/10;
+res8=10*n;
+bibisi(z1);
+zx1=bobik;
+bibisi(z3);
+zx3=bobik;
+bibisi(z4);
+zx4=bobik;
+bibisi(b);
+xxb=bobik;
+
+s="В трех бочонках находится масло. В первом "+zx1 +" литра, во втором "+zx3+" литра, в третьем "+zx4+" литра. Все это масло разлили в бутылки по "+xxb+" л. Сколько бутылок получилось ?";
+sos8="Правильный ответ :"+res8;
+
+break;
+case 2:
+x=prr(2,11);
+y=prr(2,11);
+do
+{
+a=prr(10,99);
+b=prr(10,99);
+}
+while(a<=b);
+z=x-(-y);
+zz=a*x-(-b*y);
+if (a>b)
+{
+ s="Сумма двух чисел x и y равна "+z+". Найти x, если известно, что "+a+"x + "+b+"y = "+zz;
+ res8=x;
+ sos8=""+a+"x + "+b+"y = "+zz+"<br>"+(a-b)+"x + "+b+"x + "+b+"y = "+zz+"<br>"+(a-b)+"x + "+b+'\u2022'+"(x + y) = "+(a-b)+"x + "+b+'\u2022'+z+" = "+zz+"<br>"+(a-b)+"x + "+(b*z)+" = "+zz+"<br>"+(a-b)+"x = "+zz+" - "+b*z+"<br>"+(a-b)+"x = "+((a-b)*x)+"<br>x = "+x+"<br>Правильный ответ: "+x;
+}
+
+break;
+case 3:
+
+a=prr(1,10);
+if (a%2!=0) a=a-(-1);
+b=prr(1,10);
+p=prr(3,10)
+d=prr(1,10*p-1);
+fifi=10*p-d;
+v=a*b*fifi/10;
+a1=a/10;
+b1=b/10;
+p1=p/10;
+d1=d/100;
+res8=v;
+bibisi(a1);
+xa1=bobik;
+bibisi(b1);
+xb1=bobik;
+bibisi(p1);
+xp1=bobik;
+bibisi(d1);
+xd1=bobik;
+bibisi(res8);
+res8=bobik;
+
+
+
+s="Основанием аквариума является прямоугольник со сторонами "+xa1+" м и "+xb1+" м. Высота аквариума "+xp1+" м. В аквариум налита вода. Ее уровень на "+xd1+" м ниже верхнего края аквариума. Найти объем воды в аквариуме в литрах.";
+sos8="Правильный ответ :"+res8;
+
+
+break;
+
+
+}
+
+
+ document.write("<font face='Courier New'>");
+ document.write("<h3>"+s+"</h3>");
+
+//document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа.</p>");
+
+document.write("<p>Ответ дайте в виде целого числа или десятичной дроби. Разделителем между целой и дробной частью должна быть запятая.</p>");
+
+document.write("<h3><input type=text name=t8 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris8' style='visibility:hidden;'> <input type=text name=st8 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+document.write("<input type=hidden name=otv value=''>");
+}
+
+function t1z9()
+{
+var m=new Array();
+hhh=prr(1,5);
+switch(hhh)
+{
+case 1:
+n=prr(5,9);
+t=0;
+for (i=1;i<=n;i++)
+{
+ m[i]=prr(1,7);
+ t=t-(-m[i]);
+}
+k=t%n;
+k1=n-k;
+t=t-(-k1);
+m[n]=m[n]-(-k1);
+d=t/n;
+ff=prr(1,3);
+switch(ff)
+{
+ case 1: zn=" Спартак ";
+ break;
+ case 2:zn=" Динамо ";break;
+ case 3:zn=" Пахтакор ";break; 
+}
+res9=m[n];
+s="В футбольном турнире все голы команды"+zn+"забивали "+n+" футболистов. Все футболисты с 1-го до "+(n-1)+"-го забили соответственно ";
+for (i=1;i<n-1;i++)
+s=s+m[i]+",";
+s=s+m[n-1]+" голов. Сколько голов забил "+n+"-ый футболист, если среднее количество голов, забитых одним человеком, равно "+d+".";
+sos9="Правильный ответ: "+res9;
+break;
+case 2:
+n=prr(3,7);
+t=0;
+for (i=1;i<=n;i++)
+{
+m[i]=prr(2,11);
+t=t-(-m[i]);
+}
+k=t%n;
+k1=n-k;
+m[n]=m[n]-(-k1);
+t=t-(-k1);
+res9=t/n;
+if (n<5) zn=" рыбака ";else zn=" рыбаков ";
+s=n+zn+"поймали на рыбалке соответственно ";
+for (i=1;i<n;i++)
+s=s+m[i]+",";
+s=s+m[n]+" рыб.Найти среднее количество рыб, пойманных одним рыбаком.";
+sos9="Правильный ответ: "+res9;
+break;
+case 3:
+a=prr(2,7);
+b=prr(2,8);
+k1=prr(3,7);
+k2=prr(2,9);
+v1=(a-(-b))*k1;
+v2=(a-(-b))*k2;
+r=v1*a-(-v2*b);
+v=r/(a-(-b));
+res9=v;
+bibisi(res9);
+res9=bobik;
+
+if (a<5) zn1=" часа ";else zn1=" часов ";
+if (b<5) zn2=" часа ";else zn2=" часов ";
+s="Автомобиль проехал "+a+zn1+" со скоростью "+v1+" км/ч, а затем "+b+zn2+" со скоростью "+v2+" км/ч. Найти среднюю скорость автомобиля.";
+sos9="Правильный ответ: "+res9;
+break;
+case 4:
+for (i=1;i<21;i++)
+m[i]=i;
+for  (i=20;i>0;i--)
+{
+z=prr(1,i);
+t=m[z];
+m[z]=m[i];
+m[i]=t;
+}
+d=0;
+n=prr(4,8);
+for (i=1;i<=n;i++)
+d=d-(-m[i]);
+th=d;
+tz=n;
+der=evklid(th,tz);
+th=th/der;
+tz=tz/der;
+for (i=1;i<=n;i++)
+m[i]=m[i]*tz;
+res9=th;
+s="Множество A={";
+for (i=1;i<n;i++)
+s=s+m[i]+",";
+s=s+m[n]+"}. Найти среднее арифметическое элементов множества A.";
+sos9="Правильный ответ: "+res9;
+break;
+case 5:
+for (i=1;i<21;i++)
+m[i]=i;
+for  (i=20;i>0;i--)
+{
+z=prr(1,i);
+t=m[z];
+m[z]=m[i];
+m[i]=t;
+}
+d=0;
+n=prr(5,8);
+for (i=1;i<n;i++)
+for (j=i+1;j<=n;j++)
+{
+ if (m[i]>m[j])
+ {
+  t=m[i];
+  m[i]=m[j];
+  m[j]=t;
+ }
+}
+for (i=2;i<=n;i++)
+d=d-(-m[i]);
+th=d;
+tz=n-1;
+der=evklid(th,tz);
+th=th/der;
+tz=tz/der;
+for (i=1;i<=n;i++)
+m[i]=m[i]*tz*n;
+d1=0;
+for (i=1;i<=n;i++)
+d1=d1-(-m[i]);
+d=d1-m[1];
+r=d1/n;
+r1=d/(n-1);
+if (n-1<5) zn1="-x ";else zn1="-и ";
+res9=r1;
+s="Среднее арифметическое "+n+"-и чисел равно "+r+".Убрали самое маленькое число, равное "+m[1]+".Чему равно среднее арифметическое оставшихся "+(n-1)+zn1+" чисел."; 
+sos9="Правильный ответ: "+res9;
+
+break;
+}
+
+
+
+
+ document.write("<font face='Courier New'>");
+ document.write("<h3>"+s+"</h3>");
+
+//document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа.</p>");
+
+document.write("<p>Ответ дайте в виде целого числа или десятичной дроби. Разделителем между целой и дробной частью должна быть запятая.</p>");
+
+document.write("<h3><input type=text name=t9 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris9' style='visibility:hidden;'> <input type=text name=st9 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+document.write("<input type=hidden name=otv value=''>");
+}
+
+function t1z10()
+{
+hhh=prr(1,5);
+switch(hhh)
+{
+case 1:
+
+a=prr(3,11);
+b=12*a;
+p=6*a*a;
+res10=p;
+s="Сумма длин всех ребер куба равна "+b+" см. Найти площадь поверхности куба.";
+
+sos10="У куба 12 ребер, и все они одинаковы. Пусть длина ребра равна x, сумма длин всех ребер равна 12x, а по условию значение этого выражения равно "+b+". Из полученного уравнения найдем x. Площадь одной грани x<sup>2</sup>="+a*a+", площадь поверхности 6x<sup>2</sup><br>Правильный ответ: "+res10;
+break;
+case 2:
+a=prr(5,30);
+b=6*a;
+res10=a;
+s="Площадь поверхности куба равна "+b+" см<sup>2</sup>.Найти площадь одной грани.";
+sos10="Площадь поверхности куба- это сумма площадей всех граней. А всех граней 6, и все они одинаковы, поэтому площадь поверхности в 6 раз больше площади одной грани.<br>Правильный ответ: "+res10;
+
+break;
+case 3:
+x=prr(3,10);
+a=x*x;
+b=6*a;
+res10=x;
+s="Площадь поверхности куба равна "+b+" см<sup>2</sup>.Чему равна длина ребра.";
+
+sos10="Пусть x- длина ребра, тогда<br>площадь одной грани x<sup>2</sup><br>Площадь поверхности куба 6x<sup>2</sup>. А по условию значение этого выражения равно "+b+". Из полученного уравнения найдем x.<br>Правильный ответ: "+res10;
+
+break;
+
+case 4:
+x=prr(1,8);
+a=x*x;
+res10=4*x;
+s="Площадь одной грани куба равна "+a+" см<sup>2</sup>.Найти периметр грани куба.";
+sos10="Пусть x длина ребра куба. Тогда площадь грани равна x<sup>2</sup>, а по условию значение этого выражения равно "+a+". Из этого уравнения найдем x, а периметр грани равен 4x<br>Правильный ответ: "+res10;
+
+break;
+
+case 5:
+x=prr(1,8);
+a=4*x;
+res10=6*x*x;
+s="Периметр одной грани куба равен "+a+" см. Найти площадь поверхности куба.";
+
+sos10="Пусть x- длина ребра куба. Тогда периметр одной грани равен 4x, а по условию значение этого выражения равно "+a+". Из этого уравнения найдем x, тогда площадь одной грани равна x<sup>2</sup>, а площадь поверхности куба равна 6x<sup>2</sup><br>Правильный ответ: "+res10;
+break;
+
+
+
+}
+
+ document.write("<font face='Courier New'>");
+ document.write("<h3>"+s+"</h3>");
+
+//document.write("<p>Ответ дайте в виде смешанной дроби со взаимно простыми числителем и знаменателем в правильной части или в виде целого числа.</p>");
+
+document.write("<p>Ответ дайте в виде целого числа или десятичной дроби. Разделителем между целой и дробной частью должна быть запятая.</p>");
+
+document.write("<h3><input type=text name=t10 size=30 value='' style='text-align:left;font-size:14'><br> <img src='hand.jpg' name='ris10' style='visibility:hidden;'> <input type=text name=st10 size=30 value='"+s+"' style='visibility:hidden;font-size:14'></h3>");
+document.write("<input type=hidden name=otv value=''>");
+
+}
+
+
+
+
+
+
+function addCookie(szName,szValue,dtDaysExpires) 
+{
+   var dtExpires = new Date();
+   var dtExpiryDate = "";
+
+   dtExpires.setTime(dtExpires.getTime() + 
+     dtDaysExpires * 24 * 60 * 60 * 1000);
+
+   dtExpiryDate = dtExpires.toGMTString();
+
+   document.cookie = 
+    szName + "=" + szValue + "; expires=" + dtExpiryDate;
+}
+
+
+function pas(tot)
+{
+ var i;
+ ttt=0;
+ window.parent.fram1.hh=0;
+zznn="";
+if (document.f1.ts0t1.value != "") zznn=document.f1.ts0t1.value+" ";
+if (document.f1.ts1t1.value != "") zznn=zznn+document.f1.ts1t1.value+"/"+document.f1.ts2t1.value;
+document.f1.t1.value=zznn;
+
+zznn="";
+if (document.f1.ts0t3.value != "") zznn=document.f1.ts0t3.value+" ";
+if (document.f1.ts1t3.value != "") zznn=zznn+document.f1.ts1t3.value+"/"+document.f1.ts2t3.value;
+document.f1.t3.value=zznn;
+
+
+if (tot==1)
+{
+ sor="";
+ sormat="";
+ for (i=1;i<=10;i++)
+ {
+  sss="document.f1.t"+qsq[i]+".value";
+  if ((eval(sss)==eval("res"+qsq[i])) && (eval(sss)!=""))
+  sormat=sormat+"1";
+  else
+  sormat=sormat+"0"; 
+
+ eval("window.parent.fram1.document.fff.pk"+i).value=eval("document.f1.st"+qsq[i]+".value");
+ eval("window.parent.fram1.document.fff.pkres"+i).value=eval("res"+qsq[i]);
+ eval("window.parent.fram1.document.fff.pkmy"+i).value=eval(sss);
+ eval("window.parent.fram1.document.fff.pksos"+i).value=eval("sos"+qsq[i]);
+ } 
+window.parent.fram1.document.ff.matxx.value=sormat; 
+
+}
+else
+{
+
+ sor="";
+ for (i=1;i<26;i++)
+ {
+  ss="document.f1.rad"+i;
+ if (eval(ss)[prav[nab[i]]-1].checked==true) 
+//  if (document.f1.rad1[1].checked==true)
+  {
+   ttt++;
+   sor=sor+"1"; 
+  }
+  else
+  {
+  sor=sor+"0"; 
+ }
+ }
+window.parent.fram1.document.ff.fizxx.value=sor; 
+}
+window.location="result.htm";
+// alert("Вариант №"+v+'\x0D'+sor+'\x0D'+"Правильных ответов "+ttt+'\x0D'+"в процентах ");
+}
+
+
+
+
+
+</script>
+
+
+
+</head>
+<body background="2.jpg" onLoad="window.parent.fram1.document.ff.hid1.value=window.parent.fram1.document.ff.hid1.value-(-1);window.parent.fram1.document.ff.gig.value=window.parent.fram1.document.ff.hid1.value-1;document.f1.reset();">
+
+<table width=100% border=0 cellspacing=0 cellpadding=0 style="top:0" >
+<tr  >
+<td width=20% bgcolor=#000000 >
+<img src="zao_001.jpg" height=100>
+</td>
+<td width=60% bgcolor=#000000>
+<H3 align=right><font color=#FFFFFF>
+Узбекистан<br>Ташкент<br>Школа № 50
+</font>
+</h3>
+</td>
+
+
+
+<td bgcolor=#000000 >
+<img src="triangle.gif" width=173 height=97>
+</td>
+</tr>
+</table>
+
+
+<table width=100% border=0>
+<tr>
+<td bgcolor=#F0F0F0  width=20% valign=top>
+<table width=100% topmargin=0>
+<tr>
+<td bgcolor=#FFFFEE>
+
+
+<ul style="font-size:14;margin-left:20" >
+
+
+
+
+
+
+
+<!--
+
+<li><a href="persona.htm">
+Персональные занятия<br><br>
+</a></li>
+
+
+-->
+
+
+
+</ul>
+
+
+
+</td>
+</tr>
+</table>
+</td>
+
+<td bgcolor=#FFFFFF valign=top>
+<!-- Основной текст-->
+<h2><font color=#990000>Математика. </font><font color=#000099><br>Экзаменационная работа 5 класс.</font></h2>
+<form name=f1 >
+<input type=reset value="Очистить все поля для ответов">
+<script language="javascript">
+window.parent.fram1.hh=3600;
+
+window.parent.fram1.t=window.setTimeout("window.parent.fram1.vrem()",1000);
+
+for (ih=1;ih<=10;ih++)
+qsq[ih]=ih;
+
+
+
+for (ih=1;ih<=10;ih++)
+{
+ document.write("<h2><font color=#000099>Задание "+ih+"</font></h2>");
+
+  eval("t1z"+qsq[ih]+"()");
+
+}
+
+
+</script>
+<table>
+<tr>
+<td valign=top>
+</td>
+<td valign=top>
+<input type=button value="Закончить тест" onclick="pas(1)">
+
+</td>
+</tr>
+</table>
+
+</form>
+<br>
+
+
+
+
+<!-- Конец основного текста-->
+
+</td>
+</tr>
+</table>
+</body>
+</html>
